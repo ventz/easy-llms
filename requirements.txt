@@ -1,0 +1,7 @@
+langchain==0.1.20
+langchain-community
+langchain-openai
+langchain-aws
+langchain-google-vertexai==1.0.3
+python-dotenv
+boto3
