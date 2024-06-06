@@ -46,8 +46,10 @@ class OpenAI(LLMs):
     def updateLLM(self):
         try:
             api_key = os.environ.get("OPENAI_API_KEY")
+            api_base = os.environ.get("OPENAI_BASE_URL")
             self.llm = ChatOpenAI(
-                api_key=api_key,
+                openai_api_key=api_key,
+                openai_api_base=api_base,
                 model=self.model,
                 temperature=self.temperature,
                 max_tokens=self.max_tokens,
