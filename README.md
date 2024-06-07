@@ -1,5 +1,5 @@
 ## Easy-LLMS
-* Easy "1-line" calling of every LLM from OpenAI, MS Azure, AWS Bedrock, and GCP Vertex
+* Easy "1-line" calling of every LLM from OpenAI, MS Azure, AWS Bedrock, GCP Vertex, and Ollama
 
 ## Table of Contents
 - [What is Easy-LLMS and why would you use it](#what-is-easy-llms-and-why-would-you-use-it)
@@ -9,6 +9,7 @@
   - [Azure](#azure)
   - [AWS](#aws)
   - [Google](#google)
+  - [Ollama](#ollama)
 - [Detailed Usage and Examples](#detailed-usage-and-examples)
   - [Easy "Import All" and call any Model](#easy-import-all-and-call-any-model)
   - [Passing Advanced Options](#passing-advanced-options)
@@ -19,7 +20,7 @@
 
 
 ## What is Easy-LLMS and why would you use it?
-Easy-LLMS is a Python module which gives you easy "1-line" access to *every* LLM (Large Language Model) within OpenAI, MS Azure, AWS Bedrock, and GCP Vertex
+Easy-LLMS is a Python module which gives you easy "1-line" access to *every* LLM (Large Language Model) within OpenAI, MS Azure, AWS Bedrock, GCP Vertex, and Ollama
 
 The idea is that you do not need to focus on the individual provider's APIs or LangChain abstractions, the different authentication methods, or the multitude of LLM requirements/options/parameters/documentation, etc. Rather, you can quickly interact and compare LLMs, get results, and build useful things with those LLMs.
 
@@ -27,9 +28,15 @@ If you find this helpful, I would very much appreciate starring it on GitHub.
 
 ## Quick Getting Started
 
-* Install via `pip install easy-llms` or `pip install git+https://github.com/ventz/easy-llms`
+### Install/Upgrade
+* Install/upgrade latest via: `pip install -U easy-llms`
 
-* Let's start with OpenAI since most are familiar with it:
+* Alternatively, install latest via: `pip install git+https://github.com/ventz/easy-llms`
+* You can upgrade to the latest via: `pip install --upgrade --force-reinstall git+https://github.com/ventz/easy-llms`
+
+
+### Example: OpenAI
+Let's start with OpenAI since most are familiar with it:
 
 ```
 from llms.openai import *
@@ -45,6 +52,62 @@ ways:
 or
 
 2.) Via having a `.llms` folder in the working directory, with a `openai` file inside of it, which contains `OPENAI_API_KEY="sk-..."`.
+
+
+### Example: AWS Bedrock - Claude v3 Haiku
+Next, let's switch to Claude v3 Haiku via AWS Bedrock.:
+
+
+```
+from llms.aws import *
+
+answer = claude_3_haiku().run("what llm are you?")
+```
+
+The authentication, in this case for AWS Bedrock, is done in one of two
+ways:
+
+1.) Either by having the `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY, and `AWS_REGION` ENV variables available in your environment
+
+or
+
+2.) Via having a `.llms` folder in the working directory, with an `aws` file inside of it, which contains `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY, and `AWS_REGION`.
+
+
+### Example: Ollama - Llama3
+Next, let's switch to Llama3 via Ollama:
+
+Ollama does not export any LLMs. This is because it is technically a pass-through to any models that you have setup. 
+
+This means you will *NOT* see it list any LLMs explicitly:
+```
+from llms import *
+ollama.list()
+```
+
+What you would do in this case is pass the model directly to the
+module, for example:
+
+```
+from llms import *
+
+answer = ollama("llama3").run("what llm are you?")
+
+By default, Ollama will use the "Chat" interface. If you have a model
+that does not support Chat, you can disable chat:
+
+answer = ollama("llama3", chat=False).run("what llm are you?")
+```
+
+While Ollama has no authentication, we use the "BASE_URL" instead and it is still done in one of two
+ways:
+
+1.) Either by having the `OLLAMA_BASE_URL` ENV variable available in your environment
+
+or
+
+2.) Via having a `.llms` folder in the working directory, with a `ollama` file inside of it, which contains `OLLAMA_BASE_URL="http://fqdn:11434"`
+
 
 See [Authentication](#authentication) for more authentication information and examples.
 
@@ -111,7 +174,7 @@ AZURE_OPENAI_ENDPOINT="https://your-endpoint.openai.azure.com"
 
 or
 
-2.) `azure` file with:
+2.) `aws` file with:
 ```
 AWS_ACCESS_KEY_ID="AKIA..."
 AWS_SECRET_ACCESS_KEY="..."
@@ -163,6 +226,21 @@ GCP_CREDENTIALS_JSON='{
 ```
 
 
+### Ollama
+
+1.) ENV variables:
+
+`export OLLAMA_BASE_URL="http://fqdn:11434"`
+
+or
+
+2.) `ollama` file with:
+```
+OLLAMA_BASE_URL="http://fqdn:11434"
+```
+
+
+
 ## Detailed Usage and Examples
 
 1.) Look at [Supported Providers and Models](#supported-providers-and-models) to get a list of Providers and Models - a one time task!
@@ -207,6 +285,33 @@ answer = claude_3_haiku().run(question)
 answer = gemini_pro_1_5().run(question)
 ```
 
+It is worth noting again for that Ollama, you will specify the model
+directly, such as:
+
+```
+from llms import *
+
+question = "Who was the first person to step on the moon?"
+
+answer = ollama("llama3").run(question)
+
+answer = ollama("mistral").run(question)
+```
+
+And again, if your Ollama model does not support "Chat", you can specify it without Chat:
+
+```
+from llms import *
+
+question = "Who was the first person to step on the moon?"
+
+answer = ollama("command-r-plus", chat=False).run(question)
+```
+
+
+
+
+
 ### Passing Advanced Options
 
 You can pass *every* option/parameter that each provider and model supports.
@@ -233,6 +338,13 @@ And:
 ```
 answer = gpt_4o(top_p=1, presence_penalty=1, frequency_penalty=1).run("what llm are you?")
 ```
+
+For Ollama, it's as simple as:
+
+```
+answer = ollama("llama3", top_p=1, presence_penalty=1, frequency_penalty=1).run("what llm are you?")
+```
+
 
 
 
@@ -264,14 +376,29 @@ or Google:
 from llms.google import *
 ```
 
+
 You can further narrow it down to one model. For example, let's say
-you only need "gpt-4o" from OpenAI:
-
-
+you only need "gpt-4o" from OpenAI, you can load it as:
 ```
 from llms.openai import gpt_4o
 answer = gpt_4o().run(...)
 ```
+
+
+Again, Ollama is the only one that you *CANNOT* load with:
+```
+from llms.ollama import *
+answer = ollama("llama3").run(...)
+```
+
+This is due to Ollama not exporting any LLMs.
+
+You would have load it with:
+```
+from llms import ollama
+answer = ollama("llama3").run(...)
+```
+
 
 
 ## Supported Providers and Models
@@ -285,7 +412,7 @@ print(llms.list())
 
 Which will produce:
 ```
-['openai', 'azure', 'aws', 'google']
+['openai', 'azure', 'aws', 'google', 'ollama']
 ```
 
 And from there, you can list each as:
@@ -302,6 +429,13 @@ print(aws.list())
 
 from llms import google
 print(google.list())
+
+# NOTE: Ollama does not export any LLMs.
+#       This is because it is technically a pass-through to any models that you have setup. 
+#       That means you will see an empty list "[]" of exported LLMs 
+from llms import ollama
+print(ollama.list())
+
 ```
 
 Which will produce the models you can use:
@@ -313,11 +447,14 @@ Which will produce the models you can use:
 ['claude_3_haiku', 'claude_3_sonnet', 'claude_3_opus', 'claude_1_instant', 'claude_1', 'llama2_70b', 'llama3_8b_instruct', 'llama3_70b_instruct', 'mistral_7b_instruct', 'mistral_large', 'mistral_small', 'mixtral_8x7b_instruct', 'cohere_command_14', 'cohere_command_light_14', 'j2_mid', 'j2_ultra', 'titan_lite_v1', 'titan_express_v1', 'titan_premier_v1']
 
 ['gemini_pro_1', 'gemini_pro_1_5', 'gemini_flash_1_5', 'bison', 'bison_32k']
+
+# NOTE: Ollama is empty due to not exporting any LLMs
+[]
 ```
 
 
 
-I also made a more user-friendly list of the models across OpenAI, Azure, AWS, and Google:
+I also made a more user-friendly list of the models across OpenAI, Azure, AWS, Google, and Ollama:
 
 ```
 # AWS Anthropic:
@@ -377,6 +514,11 @@ I also made a more user-friendly list of the models across OpenAI, Azure, AWS, a
 * google-gemini-pro-1.0
 * google-gemini-pro-1.5-preview
 * google-gemini-flash-1.5-preview
+
+# Ollama
+# https://ollama.com/library
+* Any "Chat" model
+* Any "Invoke" model
 ```
 
 
@@ -390,7 +532,7 @@ I also made a more user-friendly list of the models across OpenAI, Azure, AWS, a
 
 * You have installed Easy-LLMS: `pip install easy-llms` or `pip install git+https://github.com/ventz/easy-llms`
 
-* You have API access to the providers/models you want to use: OpenAI; MS Azure; AWS Bedrock; Google Vertex
+* You have API access to the providers/models you want to use: OpenAI; MS Azure; AWS Bedrock; Google Vertex; Ollama
 See [Supported Providers and Models](#supported-providers-and-models) for more information.
 
 
