@@ -2,31 +2,33 @@
 * Easy "1-line" calling of every LLM from OpenAI, MS Azure, AWS Bedrock, GCP Vertex, and Ollama
 
 ## Table of Contents
-- [What is Easy-LLMS and why would you use it](#what-is-easy-llms-and-why-would-you-use-it)
-- [Quick Getting Started](#quick-getting-started)
-- [Authentication](#authentication)
+- [1.) What is Easy-LLMS and why would you use it](#1-what-is-easy-llms-and-why-would-you-use-it)
+- [2.) Quick Getting Started](#2-quick-getting-started)
+- [3.) Authentication](#3-authentication)
   - [OpenAI](#openai)
   - [Azure](#azure)
   - [AWS](#aws)
   - [Google](#google)
   - [Ollama](#ollama)
-- [Detailed Usage and Examples](#detailed-usage-and-examples)
+- [4.) Detailed Usage and Examples](#4-detailed-usage-and-examples)
   - [Easy "Import All" and call any Model](#easy-import-all-and-call-any-model)
   - [Passing Advanced Options](#passing-advanced-options)
   - [Loading Providers and Models more efficiently](#loading-providers-and-models-more-efficiently)
-- [Supported Providers and Models](#supported-providers-and-models)
-- [Assumptions](#assumptions)
-- [Help/Questions/Comments](#help-questions-comments)
+- [5.) Supported Providers and Models](#5-supported-providers-and-models)
+- [6.) Assumptions](#6-assumptions)
+- [7.) Help/Questions/Comments](#7-help-questions-comments)
 
 
-## What is Easy-LLMS and why would you use it?
+## 1.) What is Easy-LLMS and why would you use it?
 Easy-LLMS is a Python module which gives you easy "1-line" access to *every* LLM (Large Language Model) within OpenAI, MS Azure, AWS Bedrock, GCP Vertex, and Ollama
 
 The idea is that you do not need to focus on the individual provider's APIs or LangChain abstractions, the different authentication methods, or the multitude of LLM requirements/options/parameters/documentation, etc. Rather, you can quickly interact and compare LLMs, get results, and build useful things with those LLMs.
 
 If you find this helpful, I would very much appreciate starring it on GitHub.
 
-## Quick Getting Started
+
+
+## 2.) Quick Getting Started
 
 ### Install/Upgrade
 * Install/upgrade latest via: `pip install -U easy-llms`
@@ -109,13 +111,13 @@ or
 2.) Via having a `.llms` folder in the working directory, with a `ollama` file inside of it, which contains `OLLAMA_BASE_URL="http://fqdn:11434"`
 
 
-See [Authentication](#authentication) for more authentication information and examples.
+See [Authentication](#3-authentication) for more authentication information and examples.
 
-See [Detailed Usage and Examples](#detailed-usage-and-examples) for more usage and options (including advanced parameters) options.
+See [Detailed Usage and Examples](#4-detailed-usage-and-examples) for more usage and options (including advanced parameters) options.
 
 
 
-## Authentication
+## 3.) Authentication
 
 There are two ways of authenticating the various providers within Easy-LLMS:
 
@@ -241,11 +243,11 @@ OLLAMA_BASE_URL="http://fqdn:11434"
 
 
 
-## Detailed Usage and Examples
+## 4.) Detailed Usage and Examples
 
-1.) Look at [Supported Providers and Models](#supported-providers-and-models) to get a list of Providers and Models - a one time task!
+1.) Look at [Supported Providers and Models](#5-supported-providers-and-models) to get a list of Providers and Models - a one time task!
 
-2.) Then make sure you have setup the proper [Authentication](#authentication) - a one time task!
+2.) Then make sure you have setup the proper [Authentication](#3-authentication) - a one time task!
 
 3.) The easiest and quickest way to use everything:
 
@@ -401,7 +403,7 @@ answer = ollama("llama3").run(...)
 
 
 
-## Supported Providers and Models
+## 5.) Supported Providers and Models
 
 You can list out the models with:
 
@@ -522,7 +524,7 @@ I also made a more user-friendly list of the models across OpenAI, Azure, AWS, G
 ```
 
 
-## Assumptions?
+## 6.) Assumptions?
 
 * You have python3 (ideally 3.11.x+, although it should work 3.6.x+)
 
@@ -536,6 +538,6 @@ I also made a more user-friendly list of the models across OpenAI, Azure, AWS, G
 See [Supported Providers and Models](#supported-providers-and-models) for more information.
 
 
-## Help/Questions/Comments
+## 7.) Help/Questions/Comments
 Please feel free to open GitHub Issues for all Questions and Comments.
 PRs are always welcome and encouraged! The goal is to make this project better!
