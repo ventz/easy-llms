@@ -2,7 +2,7 @@
 from .google import Google
 
 class Bison32k(Google):
-    name = "bison-32k"
+    name = "bison_32k"
     model = "chat-bison-32k"  # Override class variable
 
     def __init__(self, temperature=0.2, max_tokens=8192, **model_kwargs):

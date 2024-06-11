@@ -7,7 +7,7 @@ with open("requirements.txt") as f:
 setup(
     name="easy-llms",
     description="Easy '1-line' calling of every LLM from OpenAI, MS Azure, AWS Bedrock, GCP Vertex, and Ollama",
-    version="0.1.4.post2",
+    version="0.1.5",
     author="Ventz Petkov",
     url="https://github.com/ventz/easy-llms",
     license="MIT",

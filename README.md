@@ -145,6 +145,12 @@ or
 OPENAI_API_KEY="sk-..."
 ```
 
+NOTE: There is one more variable available: `OPENAI_BASE_URL`, and it
+can be used to point at an OpenAI compatible proxy. (ex: LiteLLM)
+
+It can be supplied as an ENV variable, or within the `openai` file.
+
+
 ### Azure
 
 1.) ENV variables:
@@ -462,7 +468,7 @@ I also made a more user-friendly list of the models across OpenAI, Azure, AWS, G
 # AWS Anthropic:
 * claude-3-haiku
 * claude-3-sonnet
-* claude-3-opus
+* claude-3-opus [note: currently only available in 'us-east-2']
 * claude-v2
 * claude-instant
 
@@ -497,6 +503,7 @@ I also made a more user-friendly list of the models across OpenAI, Azure, AWS, G
 # MS Azure:
 * azure-gpt-4-turbo-preview
 * azure-gpt-3.5-turbo
+* azure-gpt-4o
 * azure-gpt-4
 * azure-gpt-3.5-turbo-16k
 * azure-gpt-4-32k
@@ -514,8 +521,8 @@ I also made a more user-friendly list of the models across OpenAI, Azure, AWS, G
 * google-chat-bison
 * google-chat-bison-32k
 * google-gemini-pro-1.0
-* google-gemini-pro-1.5-preview
-* google-gemini-flash-1.5-preview
+* google-gemini-pro-1.5-preview [note: currently only available in 'us-central1']
+* google-gemini-flash-1.5-preview [note: currently only available in 'us-central1']
 
 # Ollama
 # https://ollama.com/library

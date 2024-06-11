@@ -2,7 +2,7 @@
 from .aws import AWS
 
 class Claude2(AWS):
-    name = "claude_1"
+    name = "claude_2"
     model = "anthropic.claude-v2:1"  # Override class variable
 
     def __init__(self, temperature=0.2, max_tokens=4096, **model_kwargs):

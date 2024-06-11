@@ -5,7 +5,7 @@ class AzureGPT4Turbo(AzureOpenAI):
     name = "azure_gpt_4_turbo"
     model = "gpt-4-turbo"  # Override class variable
 
-    def __init__(self, temperature=0.2, max_tokens=4096, **model_kwargs):
+    def __init__(self, temperature=0.2, max_tokens=3896, **model_kwargs):
         super().__init__(**model_kwargs)
         self.temperature = temperature
         self.max_tokens = max_tokens

@@ -5,7 +5,7 @@ class TitanPremierV1(AWS):
     name = "titan_premier_v1"
     model = "amazon.titan-text-premier-v1:0"  # Override class variable
 
-    def __init__(self, temperature=0.2, max_tokens=8192, **model_kwargs):
+    def __init__(self, temperature=0.2, max_tokens=3072, **model_kwargs):
         super().__init__(**model_kwargs)
 
         self.model_kwargs = {

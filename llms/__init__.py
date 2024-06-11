@@ -11,6 +11,7 @@ from .azure import AzureOpenAI as azure
 from .azure.gpt35turbo import AzureGPT35Turbo as azure_gpt_35_turbo
 from .azure.gpt35turbo16k import AzureGPT35Turbo16k as azure_gpt_35_turbo_16k
 from .azure.gpt4turbo import AzureGPT4Turbo as azure_gpt_4_turbo
+from .azure.gpt4o import AzureGPT4o as azure_gpt_4o
 from .azure.gpt4 import AzureGPT4 as azure_gpt_4
 from .azure.gpt432k import AzureGPT432k as azure_gpt_4_32k
 from .aws import AWS as aws
@@ -43,4 +44,4 @@ from .google.bison import Bison as bison
 from .google.bison32k import Bison32k as bison_32k
 from .ollama import OllamaLLM as ollama
 
-_all__ = ['llms', 'openai', 'gpt_35_turbo', 'gpt_35_turbo_16k', 'gpt_4_turbo', 'gpt_4o', 'gpt_4', 'gpt_4_32k', 'azure', 'azure_gpt_35_turbo', 'azure_gpt_35_turbo_16k', 'azure_gpt_4_turbo', 'azure_gpt_4', 'azure_gpt_4_32k', 'aws', 'claude_3_haiku', 'claude_3_sonnet', 'claude_3_opus', 'claude_1_instant', 'claude_2', 'llama2_70b', 'llama3_8b_instruct', 'llama3_70b_instruct', 'mistral_7b_instruct', 'mistral_large', 'mistral_small', 'mixtral_8x7b_instruct', 'cohere_command_14', 'cohere_command_light_14', 'j2_mid', 'j2_ultra', 'google', 'gemini_pro_1', 'gemini_pro_1_5', 'gemini_flash_1_5', 'bison', 'bison_32k', 'ollama']
+_all__ = ['llms', 'openai', 'gpt_35_turbo', 'gpt_35_turbo_16k', 'gpt_4_turbo', 'gpt_4o', 'gpt_4', 'gpt_4_32k', 'azure', 'azure_gpt_35_turbo', 'azure_gpt_35_turbo_16k', 'azure_gpt_4_turbo', 'azure_gpt_4o', 'azure_gpt_4', 'azure_gpt_4_32k', 'aws', 'claude_3_haiku', 'claude_3_sonnet', 'claude_3_opus', 'claude_1_instant', 'claude_2', 'llama2_70b', 'llama3_8b_instruct', 'llama3_70b_instruct', 'mistral_7b_instruct', 'mistral_large', 'mistral_small', 'mixtral_8x7b_instruct', 'cohere_command_14', 'cohere_command_light_14', 'j2_mid', 'j2_ultra', 'google', 'gemini_pro_1', 'gemini_pro_1_5', 'gemini_flash_1_5', 'bison', 'bison_32k', 'ollama']
