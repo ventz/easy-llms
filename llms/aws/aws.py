@@ -64,10 +64,13 @@ class AWS(LLMs):
             sys.exit(1)
 
     @classmethod
-    def auth(cls):
+    def auth(cls, model=None):
         # AWS Bedrock auth happens here
         try:
-            auth_status = load_dotenv(".llms/aws")
+            if(model):
+                auth_status = load_dotenv(f".llms/aws-{model}", override=True)
+            else:
+                auth_status = load_dotenv(".llms/aws")
             if not auth_status:
                 if not (
                     os.environ.get("AWS_ACCESS_KEY_ID") and

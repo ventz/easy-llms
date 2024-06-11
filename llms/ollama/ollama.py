@@ -14,7 +14,7 @@ class OllamaLLM(LLMs):
     temperature = 0.2  # Class variable
     max_tokens = None  # Class variable
 
-    def __init__(self, model, chat=True, **model_kwargs):
+    def __init__(self, model, chat=True, model_auth=None, **model_kwargs):
         super().__init__()
 
         self.model = model
@@ -22,7 +22,10 @@ class OllamaLLM(LLMs):
 
         # AUTHENTICATION
         try:
-            self.auth()
+            if(model_auth):
+                self.auth(model)
+            else:
+                self.auth()
         except Exception as e:
             print(f"Error during authentication: {e}")
 
@@ -62,11 +65,14 @@ class OllamaLLM(LLMs):
             sys.exit(1)
 
     @classmethod
-    def auth(cls):
+    def auth(cls, model=None):
         # Ollama does not have auth - however it needs a "base_url" via OLLAMA_BASE_URL
         # By default it will assume "localhost", but we are going to use this as a requirement
         try:
-            auth_status = load_dotenv(".llms/ollama")
+            if(model):
+                auth_status = load_dotenv(f".llms/ollama-{model}", override=True)
+            else:
+                auth_status = load_dotenv(".llms/ollama")
             if not auth_status:
                 if not os.environ.get("OLLAMA_BASE_URL"):
                     raise EnvironmentError("`OLLAMA_BASE_URL` env variable not defined, and `.llms/ollama` not available")

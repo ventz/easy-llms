@@ -10,6 +10,7 @@
   - [AWS](#aws)
   - [Google](#google)
   - [Ollama](#ollama)
+  - [Per Model Authentication](#per-model-authentication)
 - [4.) Detailed Usage and Examples](#4-detailed-usage-and-examples)
   - [Easy "Import All" and call any Model](#easy-import-all-and-call-any-model)
   - [Passing Advanced Options](#passing-advanced-options)
@@ -247,7 +248,29 @@ or
 OLLAMA_BASE_URL="http://fqdn:11434"
 ```
 
+## Per Model Authentication
 
+You can override the auth for a specific model by using the `.llms/provider-model` structure, where `provider` is one of: `openai`, `azure`, `google`, and `ollama`, and model is any of the
+models via `provider.list()`
+
+For example, to override the auth for "Claude 3 Opus", since the model
+name is `claude_3_opus` and it's from `aws`, you can create a `.llm/aws-claude_3_opus` config.
+
+Or, to override the auth for "Titan Premier", since the model name is `titan_premier_v1` and it's from `aws`, you can create a `.llm/aws-titan_premier_v1` config.
+
+Other than being able to authenticate a specific LLM with different credentials, this is especially useful for certain models that are only available in specific regions (ex: Claude 3 Opus in "us-west-2", and Titan Premier in "us-east-1")
+
+For Ollama, again it is worth noting that since it does not export any LLMs, in order to auth a specific model to a specific Ollama instance, you need to pass the `model_auth=True` parameter manually, for example:
+
+```
+from llms import *
+
+question = "Who was the first person to step on the moon?"
+
+answer = ollama("llama3", model_auth=True).run(question)
+```
+
+This will look for a `.llms/ollama-llama3` config.
 
 ## 4.) Detailed Usage and Examples
 
@@ -462,7 +485,7 @@ Which will produce the models you can use:
 
 
 
-I also made a more user-friendly list of the models across OpenAI, Azure, AWS, Google, and Ollama:
+Here is a user-friendly list of the models across OpenAI, Azure, AWS, Google, and Ollama, however do note that these are NOT the model names that you would use within Easy-LLMS:
 
 ```
 # AWS Anthropic:
@@ -498,7 +521,7 @@ I also made a more user-friendly list of the models across OpenAI, Azure, AWS, G
 # AWS Amazon (Titan):
 * amazon-titan-lite
 * amazon-titan-express
-* amazon-titan-premier
+* amazon-titan-premier [note: currently only available in 'us-east-1']
 
 # MS Azure:
 * azure-gpt-4-turbo-preview

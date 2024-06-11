@@ -11,6 +11,13 @@ class Bison32k(Google):
         self.temperature=temperature
         self.max_tokens=max_tokens
 
+        # Override AUTHENTICATION per Model
+        try:
+            self.auth(self.__class__.name.lower())
+        except Exception as e:
+            print(f"Error during authentication: {e}")
+
+
         try:
             self.updateLLM()
         except Exception as e:

@@ -15,6 +15,12 @@ class CohereCommand14(AWS):
             **model_kwargs
         }
 
+        # Override AUTHENTICATION per Model
+        try:
+            self.auth(self.__class__.name.lower())
+        except Exception as e:
+            print(f"Error during authentication: {e}")
+
 
         try:
             self.updateLLM(self.chat)

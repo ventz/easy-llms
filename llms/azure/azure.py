@@ -64,10 +64,13 @@ class AzureOpenAI(LLMs):
             sys.exit(1)
 
     @classmethod
-    def auth(cls):
+    def auth(cls, model=None):
         # Azure OpenAI auth happens here
         try:
-            auth_status = load_dotenv(".llms/azure")
+            if(model):
+                auth_status = load_dotenv(f".llms/azure-{model}", override=True)
+            else:
+                auth_status = load_dotenv(".llms/azure")
             if not auth_status:
                 if not (
                     os.environ.get("AZURE_OPENAI_ENDPOINT") and

@@ -62,10 +62,13 @@ class OpenAI(LLMs):
             sys.exit(1)
 
     @classmethod
-    def auth(cls):
+    def auth(cls, model=None):
         # OpenAI auth happens here
         try:
-            auth_status = load_dotenv(".llms/openai")
+            if(model):
+                auth_status = load_dotenv(f".llms/openai-{model}", override=True)
+            else:
+                auth_status = load_dotenv(".llms/openai")
             if not auth_status:
                 if not os.environ.get("OPENAI_API_KEY"):
                     raise EnvironmentError("`OPENAI_API_KEY` env variable not defined, and `.llms/openai` not available")

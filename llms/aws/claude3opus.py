@@ -15,9 +15,16 @@ class Claude3Opus(AWS):
             **model_kwargs
         }
 
+        # Override AUTHENTICATION per Model - needed due to limited specific Region rollout
+        try:
+            self.auth(self.__class__.name.lower())
+        except Exception as e:
+            print(f"Error during authentication: {e}")
+
 
         try:
             self.updateLLM()
         except Exception as e:
             print(f"Error updating LLM in {self.__class__.__name__}: {e}")
+
 

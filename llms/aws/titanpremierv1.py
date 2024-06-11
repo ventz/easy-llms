@@ -14,6 +14,11 @@ class TitanPremierV1(AWS):
             **model_kwargs
         }
 
+        # Override AUTHENTICATION - needed due to limited specific Region rollout
+        try:
+            self.auth(self.__class__.__name__.lower())
+        except Exception as e:
+            print(f"Error during authentication: {e}")
 
         try:
             self.updateLLM()

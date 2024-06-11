@@ -32,6 +32,12 @@ class GeminiPro1(Google):
 
         self.llm.safety_settings = safety_settings
 
+        # Override AUTHENTICATION per Model
+        try:
+            self.auth(self.__class__.name.lower())
+        except Exception as e:
+            print(f"Error during authentication: {e}")
+
         try:
             self.updateLLM()
         except Exception as e:

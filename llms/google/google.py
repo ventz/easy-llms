@@ -72,10 +72,13 @@ class Google(LLMs):
             sys.exit(1)
 
     @classmethod
-    def auth(cls):
+    def auth(cls, model=None):
         # Google auth happens here
         try:
-            auth_status = load_dotenv(".llms/google")
+            if(model):
+                auth_status = load_dotenv(f".llms/google-{model}", override=True)
+            else:
+                auth_status = load_dotenv(".llms/google")
             if not auth_status:
                 if not (
                     os.environ.get("GCP_PROJECT_ID") and
