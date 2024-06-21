@@ -20,6 +20,7 @@ class Llama370bInstruct(AWS):
         except Exception as e:
             print(f"Error during authentication: {e}")
 
+
         try:
             self.updateLLM()
         except Exception as e:

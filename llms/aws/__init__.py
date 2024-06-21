@@ -2,6 +2,7 @@
 from .claude3haiku import Claude3Haiku as claude_3_haiku
 from .claude3sonnet import Claude3Sonnet as claude_3_sonnet
 from .claude3opus import Claude3Opus as claude_3_opus
+from .claude35sonnet import Claude35Sonnet as claude_35_sonnet
 from .claude1instant import Claude1Instant as claude_1_instant
 from .claude2 import Claude2 as claude_2
 from .llama270b import Llama270b as llama2_70b
@@ -22,4 +23,4 @@ from .titanexpressv1 import TitanExpressV1 as titan_express_v1
 from .titanpremierv1 import TitanPremierV1 as titan_premier_v1
 from .aws import AWS
 
-__all__ = ['claude_3_haiku', 'claude_3_sonnet', 'claude_3_opus', 'claude_1_instant', 'claude_2', 'llama2_70b', 'llama3_8b_instruct', 'llama3_70b_instruct', 'mistral_7b_instruct', 'mistral_large', 'mistral_small', 'mixtral_8x7b_instruct', 'cohere_command_14', 'cohere_command_light_14', 'j2_mid', 'j2_ultra', 'titan_lite_v1', 'titan_express_v1', 'titan_premier_v1']
+__all__ = ['claude_3_haiku', 'claude_3_sonnet', 'claude_3_opus', 'claude_35_sonnet', 'claude_1_instant', 'claude_2', 'llama2_70b', 'llama3_8b_instruct', 'llama3_70b_instruct', 'mistral_7b_instruct', 'mistral_large', 'mistral_small', 'mixtral_8x7b_instruct', 'cohere_command_14', 'cohere_command_light_14', 'j2_mid', 'j2_ultra', 'titan_lite_v1', 'titan_express_v1', 'titan_premier_v1']
