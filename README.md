@@ -471,7 +471,7 @@ print(ollama.list())
 
 Which will produce the models you can use:
 ```
-['gpt_35_turbo', 'gpt_35_turbo_16k', 'gpt_4_turbo', 'gpt_4o', 'gpt_4', 'gpt_4_32k']
+['gpt_35_turbo', 'gpt_35_turbo_16k', 'gpt_4_turbo', 'gpt_4o', 'gpt_4o_mini', 'gpt_4', 'gpt_4_32k']
 
 ['azure_gpt_35_turbo', 'azure_gpt_35_turbo_16k', 'azure_gpt_4_turbo', 'azure_gpt_4', 'azure_gpt_4_32k']
 
@@ -537,6 +537,7 @@ Here is a user-friendly list of the models across OpenAI, Azure, AWS, Google, an
 * gpt-4-turbo-preview
 * gpt-3.5-turbo
 * gpt-4o
+* gpt-4o-mini
 * gpt-4
 * gpt-3.5-turbo-16k
 * gpt-4-32k

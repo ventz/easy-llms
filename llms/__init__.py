@@ -5,6 +5,7 @@ from .openai.gpt35turbo import GPT35Turbo as gpt_35_turbo
 from .openai.gpt35turbo16k import GPT35Turbo16k as gpt_35_turbo_16k
 from .openai.gpt4turbo import GPT4Turbo as gpt_4_turbo
 from .openai.gpt4o import GPT4o as gpt_4o
+from .openai.gpt4omini import GPT4oMini as gpt_4o_mini
 from .openai.gpt4 import GPT4 as gpt_4
 from .openai.gpt432k import GPT432k as gpt_4_32k
 from .azure import AzureOpenAI as azure
@@ -34,6 +35,7 @@ from .aws.coherecommandlight14 import CohereCommandLight14 as cohere_command_lig
 #from .aws.coherecommandrplus import CohereCommandRPlus as coherecommand_r_plus
 from .aws.j2mid import J2Mid as j2_mid
 from .aws.j2ultra import J2Ultra as j2_ultra
+#from .aws.j2jambainstruct import J2JambaInstruct as j2_jamba_instruct
 from .aws.titanlitev1 import TitanLiteV1 as titan_lite_v1
 from .aws.titanexpressv1 import TitanExpressV1 as titan_express_v1
 from .aws.titanpremierv1 import TitanPremierV1 as titan_premier_v1
@@ -45,4 +47,4 @@ from .google.bison import Bison as bison
 from .google.bison32k import Bison32k as bison_32k
 from .ollama import OllamaLLM as ollama
 
-_all__ = ['llms', 'openai', 'gpt_35_turbo', 'gpt_35_turbo_16k', 'gpt_4_turbo', 'gpt_4o', 'gpt_4', 'gpt_4_32k', 'azure', 'azure_gpt_35_turbo', 'azure_gpt_35_turbo_16k', 'azure_gpt_4_turbo', 'azure_gpt_4o', 'azure_gpt_4', 'azure_gpt_4_32k', 'aws', 'claude_3_haiku', 'claude_3_sonnet', 'claude_3_opus', 'claude_35_sonnet', 'claude_1_instant', 'claude_2', 'llama2_70b', 'llama3_8b_instruct', 'llama3_70b_instruct', 'mistral_7b_instruct', 'mistral_large', 'mistral_small', 'mixtral_8x7b_instruct', 'cohere_command_14', 'cohere_command_light_14', 'j2_mid', 'j2_ultra', 'google', 'gemini_pro_1', 'gemini_pro_1_5', 'gemini_flash_1_5', 'bison', 'bison_32k', 'ollama']
+_all__ = ['llms', 'openai', 'gpt_35_turbo', 'gpt_35_turbo_16k', 'gpt_4_turbo', 'gpt_4o', 'gpt_4o_mini', 'gpt_4', 'gpt_4_32k', 'azure', 'azure_gpt_35_turbo', 'azure_gpt_35_turbo_16k', 'azure_gpt_4_turbo', 'azure_gpt_4o', 'azure_gpt_4', 'azure_gpt_4_32k', 'aws', 'claude_3_haiku', 'claude_3_sonnet', 'claude_3_opus', 'claude_35_sonnet', 'claude_1_instant', 'claude_2', 'llama2_70b', 'llama3_8b_instruct', 'llama3_70b_instruct', 'mistral_7b_instruct', 'mistral_large', 'mistral_small', 'mixtral_8x7b_instruct', 'cohere_command_14', 'cohere_command_light_14', 'j2_mid', 'j2_ultra', 'google', 'gemini_pro_1', 'gemini_pro_1_5', 'gemini_flash_1_5', 'bison', 'bison_32k', 'ollama']
