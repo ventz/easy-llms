@@ -475,7 +475,7 @@ Which will produce the models you can use:
 
 ['azure_gpt_35_turbo', 'azure_gpt_35_turbo_16k', 'azure_gpt_4_turbo', 'azure_gpt_4', 'azure_gpt_4_32k']
 
-['claude_3_haiku', 'claude_3_sonnet', 'claude_3_opus', 'claude_35_sonnet', 'claude_1_instant', 'claude_1', 'llama2_70b', 'llama3_8b_instruct', 'llama3_70b_instruct', 'llama3_1_8b_instruct', 'llama3_1_70b_instruct', 'mistral_7b_instruct', 'mistral_large', 'mistral_small', 'mixtral_8x7b_instruct', 'cohere_command_14', 'cohere_command_light_14', 'j2_mid', 'j2_ultra', 'titan_lite_v1', 'titan_express_v1', 'titan_premier_v1']
+['claude_3_haiku', 'claude_3_sonnet', 'claude_3_opus', 'claude_35_sonnet', 'claude_1_instant', 'claude_1', 'llama2_70b', 'llama3_8b_instruct', 'llama3_70b_instruct', 'llama3_1_8b_instruct', 'llama3_1_70b_instruct', 'llama3_1_405b_instruct', 'mistral_7b_instruct', 'mistral_large', 'mistral_large_2', 'mistral_small', 'mixtral_8x7b_instruct', 'cohere_command_14', 'cohere_command_light_14', 'j2_mid', 'j2_ultra', 'titan_lite_v1', 'titan_express_v1', 'titan_premier_v1']
 
 ['gemini_pro_1', 'gemini_pro_1_5', 'gemini_flash_1_5', 'bison', 'bison_32k']
 
@@ -503,10 +503,12 @@ Here is a user-friendly list of the models across OpenAI, Azure, AWS, Google, an
 * llama3-70b
 * llama3.1-8b
 * llama3.1-70b
+* llama3.1-405b
 
 # AWS Mistral and Mixtral:
 * mistral-7b-instruct
 * mistral-large
+* mistral-large-2
 * mistral-small
 * mixtral-8x7b-instruct
 * mixtral-large
